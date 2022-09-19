@@ -45,7 +45,8 @@ Level::~Level()
 
 void Level::MouseButtonPressed(sf::RenderWindow& _window)
 {
-    m_birds.push_back(new Bird());
+    int randBird = rand() % 6;
+    m_birds.push_back(new Bird(randBird));
 
     m_catapult->LoadBird(m_birds[m_birds.size() - 1]);
     m_catapult->MoveBird(_window);

@@ -28,11 +28,12 @@ public:
 	sf::Sprite m_sprite;
 	b2Body* m_body;
 
-	Bird();
+	Bird(int _BirdType);
 
 	void Launch(float _scale, sf::Vector2f _position, b2World& _world);
 	void Render(sf::RenderWindow& _window, float _scale);
 
+	BIRDTYPE m_birdtype;
 
 
 };

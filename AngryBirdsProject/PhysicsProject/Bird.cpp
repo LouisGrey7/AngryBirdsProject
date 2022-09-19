@@ -1,20 +1,22 @@
 #include "Bird.h"
 
-Bird::Bird()
+Bird::Bird(int _BirdType)
 {
-	int randSprite = rand() % 6;
+	
 
-
-	switch (randSprite)
+	switch (_BirdType)
 	{
 	case 0:
 		m_texture.loadFromFile("Resources/Sprites/Goon1.png");
+		m_birdtype = BIRDTYPE::REDBIRD;
 		break;
 	case 1:
 		m_texture.loadFromFile("Resources/Sprites/Goon2.png");
+		m_birdtype = BIRDTYPE::YELLOWBIRD;
 		break;
 	case 2:
 		m_texture.loadFromFile("Resources/Sprites/Goon3.png");
+		m_birdtype = BIRDTYPE::GREENBIRD;
 		break;
 	case 3:
 		m_texture.loadFromFile("Resources/Sprites/Goon4.png");
@@ -30,8 +32,8 @@ Bird::Bird()
 
 	//Set sprite
 	m_sprite.setTexture(m_texture);
-	float originX = (m_texture.getSize().x / 2);
-	float originY = (m_texture.getSize().y / 2);
+	float originX = (m_texture.getSize().x / 2.0f);
+	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
 
 }

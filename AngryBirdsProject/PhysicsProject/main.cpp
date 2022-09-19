@@ -8,6 +8,8 @@
 int main()
 {
     const double SCALE = 30.0;
+
+
     //window
     sf::RenderWindow window(sf::VideoMode(960, 540), "Angry Birds");
     window.setFramerateLimit(60);

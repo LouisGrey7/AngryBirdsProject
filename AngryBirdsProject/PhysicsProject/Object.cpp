@@ -1,4 +1,5 @@
 #include "Object.h"
+#include "iostream"
 
 Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world)
 {
@@ -22,6 +23,8 @@ Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::
 	m_fixtureDef.shape = &m_shape;
 	m_body->CreateFixture(&m_fixtureDef);
 
+
+	m_body->GetUserData().pointer = (uintptr_t)this;
 }
 
 
@@ -32,5 +35,17 @@ void Object::Render(sf::RenderWindow& _window, float _scale)
 	m_sprite.setRotation(m_body->GetAngle() * 180 / b2_pi);
 
 	_window.draw(m_sprite);
+
+}
+
+void Object::StartContact(Object* other)
+{
+
+	std::cout << "hit\n" << std::endl;
+}
+
+void Object::EndContact(Object* other)
+{
+	std::cout << "end hit\n" << std::endl;
 
 }

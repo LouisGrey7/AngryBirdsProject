@@ -6,12 +6,16 @@
 #include "Object.h"
 #include "Catapult.h"
 #include "Bird.h"
+#include "ContactListener.h"
+
 
 class Level
 {
 private:
 
 	b2World* m_world;
+	class ContactListener* contactListener;
+
 
 	Catapult* m_catapult;
 	std::vector<Object*> m_objects;
@@ -21,7 +25,7 @@ public:
 
 	//Constructor Destructor
 	Level(float _scale);
-
+	~Level();
 	//Functions
 
 	void MouseButtonPressed(sf::RenderWindow& _window);

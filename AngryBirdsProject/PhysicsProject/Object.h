@@ -25,5 +25,10 @@ public:
 	Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world);
 	
 	void Render(sf::RenderWindow& _window, float _scale);
+
+	virtual void StartContact(Object* other);
+	virtual void EndContact(Object* other);
+
+
 };
 

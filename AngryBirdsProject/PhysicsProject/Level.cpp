@@ -7,6 +7,9 @@ Level::Level(float _scale)
     b2Vec2 m_gravity(0.0, 10.f);
     m_world = new b2World (m_gravity);
 
+    contactListener = new ContactListener();
+    m_world->SetContactListener(contactListener);
+
     m_objects.push_back(new Object(sf::Vector2f(480, 500), _scale, b2BodyType::b2_staticBody, "Ground.png", m_world));
 
 
@@ -17,6 +20,27 @@ Level::Level(float _scale)
     }
 
     m_catapult = new Catapult(sf::Vector2f(250, 410));
+}
+
+Level::~Level()
+{
+    //delete all objects here
+
+    //delete contact listener
+    if (contactListener != nullptr)
+    {
+        delete contactListener;
+
+        contactListener = nullptr;
+
+    }
+    if (m_world != nullptr)
+    {
+        delete m_world;
+        m_world = nullptr;
+    }
+
+
 }
 
 void Level::MouseButtonPressed(sf::RenderWindow& _window)

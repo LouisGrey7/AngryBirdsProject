@@ -1,0 +1,6 @@
+
+*.vcxproj
+*.db-wal
+*.ipch
+*.db-shm
+*.vsidx

@@ -16,7 +16,7 @@ Level::Level(float _scale)
     //3 dynamic balls
     for (int i = 0; i < 3; ++i)
     {
-        m_objects.push_back(new Object(sf::Vector2f(550 + i * 100, 100), _scale, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(550.0f + i * 100.0f, 100.0f), _scale, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
     }
 
     m_catapult = new Catapult(sf::Vector2f(250, 410));

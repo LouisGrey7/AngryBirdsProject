@@ -6,8 +6,8 @@ Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::
 	//Set sprite
 	m_texture.loadFromFile("Resources/Sprites/" + _spritename);
 	m_sprite.setTexture(m_texture);
-	float originX = (m_texture.getSize().x / 2);
-	float originY = (m_texture.getSize().y / 2);
+	float originX = (m_texture.getSize().x / 2.0f);
+	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
 
 

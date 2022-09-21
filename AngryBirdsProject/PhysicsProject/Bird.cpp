@@ -2,8 +2,7 @@
 
 Bird::Bird(int _BirdType)
 {
-	
-
+	m_body = 0;
 	switch (_BirdType)
 	{
 	case 0:
@@ -20,14 +19,20 @@ Bird::Bird(int _BirdType)
 		break;
 	case 3:
 		m_texture.loadFromFile("Resources/Sprites/Goon4.png");
+		m_birdtype = BIRDTYPE::REDBIRD; //PLACEHOLDER
 		break;
 	case 4:
 		m_texture.loadFromFile("Resources/Sprites/Goon5.png");
+		m_birdtype = BIRDTYPE::REDBIRD;//PLACEHOLDER
 		break;
 	case 5:
 		m_texture.loadFromFile("Resources/Sprites/Goon6.png");
+		m_birdtype = BIRDTYPE::REDBIRD;//PLACEHOLDER
 		break;
-
+	default:
+		m_texture.loadFromFile("Resources/Sprites/Goon1.png");
+		m_birdtype = BIRDTYPE::REDBIRD;
+		break;
 	}
 
 	//Set sprite
@@ -51,7 +56,7 @@ void Bird::Launch(float _scale, sf::Vector2f _position, b2World& _world)
 
 
 
-	float originX = (m_texture.getSize().x / 2);
+	float originX = (m_texture.getSize().x / 2.0f);
 
 	m_shape.m_radius = (originX) / _scale;
 
@@ -80,11 +85,14 @@ void Bird::UseSpecialAbility(float _scale)
 	{
 		switch (this->m_birdtype)
 		{
-		case BIRDTYPE::YELLOWBIRD:
+		case BIRDTYPE::YELLOWBIRD: //Special ability go zoom zoom
 			this->m_body->ApplyLinearImpulse(b2Vec2(this->m_body->GetLinearVelocity().x * (_scale/15.0f), this->m_body->GetLinearVelocity().y * (_scale / 15.0f))
 													, this->m_body->GetPosition(), true);
 			break;
-		case BIRDTYPE::GREENBIRD:
+		case BIRDTYPE::GREENBIRD: //The boomerang bird. No-U turn around.
+			this->m_body->ApplyAngularImpulse(1.5f, true);
+			this->m_body->SetLinearVelocity(b2Vec2(0.0f, this->m_body->GetLinearVelocity().y));
+			this->m_body->ApplyLinearImpulse(b2Vec2(-30.0f, 0.0f), this->m_body->GetPosition(), true);
 			break;
 
 		}

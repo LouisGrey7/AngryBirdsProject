@@ -60,7 +60,7 @@ void Bird::Launch(float _scale, sf::Vector2f _position, b2World& _world)
 	m_fixtureDef.shape = &m_shape;
 
 	m_body->CreateFixture(&m_fixtureDef);
-
+	m_Launched = true;
 }
 
 void Bird::Render(sf::RenderWindow& _window, float _scale)
@@ -72,4 +72,22 @@ void Bird::Render(sf::RenderWindow& _window, float _scale)
 	}
 
 	_window.draw(m_sprite);
+}
+
+void Bird::UseSpecialAbility(float _scale)
+{
+	if (!m_AbilityActivated)
+	{
+		switch (this->m_birdtype)
+		{
+		case BIRDTYPE::YELLOWBIRD:
+			this->m_body->ApplyLinearImpulse(b2Vec2(this->m_body->GetLinearVelocity().x * (_scale/15.0f), this->m_body->GetLinearVelocity().y * (_scale / 15.0f))
+													, this->m_body->GetPosition(), true);
+			break;
+		case BIRDTYPE::GREENBIRD:
+			break;
+
+		}
+	}
+	m_AbilityActivated = false;
 }

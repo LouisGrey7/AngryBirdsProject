@@ -71,6 +71,7 @@ void Catapult::LaunchBird(float _scale, b2World& _world)
 
 		m_loadedBird->m_body->ApplyLinearImpulseToCenter(b2LaunchVector, true);
 
+		m_loadedBird->UseSpecialAbility(_scale);
 		m_loadedBird = nullptr;
 
 	}

@@ -27,6 +27,10 @@ Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::
 	m_body->GetUserData().pointer = (uintptr_t)this;
 }
 
+Object::~Object()
+{
+}
+
 
 void Object::Render(sf::RenderWindow& _window, float _scale)
 {

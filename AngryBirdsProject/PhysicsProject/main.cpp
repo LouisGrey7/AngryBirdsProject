@@ -11,7 +11,7 @@ int main()
 
 
     //window
-    sf::RenderWindow window(sf::VideoMode(960, 540), "Angry Birds");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Angry Birds");
     window.setFramerateLimit(60);
 
 
@@ -28,7 +28,14 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+            {
+                level->Unload();
+                level->Load(Stage::STAGE2);
+            }
 
             switch (event.type)
             {

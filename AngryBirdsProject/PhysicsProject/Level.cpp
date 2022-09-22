@@ -7,31 +7,28 @@ Level::Level(float _scale)
     b2Vec2 m_gravity(0.0, 10.f);
     m_world = new b2World (m_gravity);
 
-    contactListener = new ContactListener();
-    m_world->SetContactListener(contactListener);
+    m_contactListener = new ContactListener();
+    m_world->SetContactListener(m_contactListener);
 
-    m_objects.push_back(new Object(sf::Vector2f(480, 500), _scale, b2BodyType::b2_staticBody, "Ground.png", m_world));
+    m_ground = new Object(sf::Vector2f(640, 700), 30.0f, b2BodyType::b2_staticBody, "Ground.png", m_world);
 
+    m_catapult = new Catapult(sf::Vector2f(120, 550));
 
-    //3 dynamic balls
-    for (int i = 0; i < 3; ++i)
-    {
-        m_objects.push_back(new Object(sf::Vector2f(550.0f + i * 100.0f, 100.0f), _scale, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
-    }
+    Load(STAGE1);
 
-    m_catapult = new Catapult(sf::Vector2f(250, 410));
 }
 
 Level::~Level()
 {
     //delete all objects here
+    Unload();
 
     //delete contact listener
-    if (contactListener != nullptr)
+    if (m_contactListener != nullptr)
     {
-        delete contactListener;
+        delete m_contactListener;
 
-        contactListener = nullptr;
+        m_contactListener = nullptr;
 
     }
     if (m_world != nullptr)
@@ -62,8 +59,64 @@ void Level::MouseMoved(sf::RenderWindow& _window)
     m_catapult->MoveBird(_window);
 }
 
+void Level::Load(Stage _level)
+{
+    switch (_level)
+    {
+
+    case STAGE1:
+
+        m_objects.push_back(new Object(sf::Vector2f(800, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1100, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+
+
+        //3 dynamic balls
+        for (int i = 0; i < 3; ++i)
+        {
+            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Goon5.png", m_world));
+        }
+
+        break;
+    case STAGE2:
+
+        //3 dynamic balls
+        for (int i = 0; i < 3; ++i)
+        {
+            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+        }
+
+        break;
+    case STAGE3:
+
+
+        //3 dynamic balls
+        for (int i = 0; i < 3; ++i)
+        {
+            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+        }
+
+        break;
+
+    }
+}
+
+void Level::Unload()
+{
+
+    for (int i = 0; i < m_objects.size(); ++i)
+    {
+        m_world->DestroyBody(m_objects[i]->GetBody());
+    }
+    m_objects.clear();
+    m_birds.clear();
+
+}
+
 void Level::Render(sf::RenderWindow& _window, float _scale)
 {
+
 
     for (int i = 0; i < m_objects.size(); ++i)
     {
@@ -74,6 +127,7 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
         m_birds[i]->Render(_window, _scale);
     }
 
+    m_ground->Render(_window, _scale);
     m_catapult->Render(_window);
 
 }

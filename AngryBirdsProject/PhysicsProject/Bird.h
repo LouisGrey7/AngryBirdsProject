@@ -29,9 +29,11 @@ public:
 	b2Body* m_body;
 
 	Bird(int _BirdType);
+	~Bird();
 
 	void Launch(float _scale, sf::Vector2f _position, b2World& _world);
 	void Render(sf::RenderWindow& _window, float _scale);
+
 	void UseSpecialAbility(float _scale);
 
 	BIRDTYPE m_birdtype;

@@ -6,15 +6,15 @@ Bird::Bird(int _BirdType)
 	switch (_BirdType)
 	{
 	case 0:
-		m_texture.loadFromFile("Resources/Sprites/Goon1.png");
+		m_texture.loadFromFile("Resources/Sprites/RedBird.png");
 		m_birdtype = BIRDTYPE::REDBIRD;
 		break;
 	case 1:
-		m_texture.loadFromFile("Resources/Sprites/Goon2.png");
+		m_texture.loadFromFile("Resources/Sprites/YellowBird.png");
 		m_birdtype = BIRDTYPE::YELLOWBIRD;
 		break;
 	case 2:
-		m_texture.loadFromFile("Resources/Sprites/Goon3.png");
+		m_texture.loadFromFile("Resources/Sprites/GreenBird.png");
 		m_birdtype = BIRDTYPE::GREENBIRD;
 		break;
 	case 3:
@@ -30,7 +30,7 @@ Bird::Bird(int _BirdType)
 		m_birdtype = BIRDTYPE::REDBIRD;//PLACEHOLDER
 		break;
 	default:
-		m_texture.loadFromFile("Resources/Sprites/Goon1.png");
+		m_texture.loadFromFile("Resources/Sprites/RedBird.png");
 		m_birdtype = BIRDTYPE::REDBIRD;
 		break;
 	}
@@ -41,6 +41,11 @@ Bird::Bird(int _BirdType)
 	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
 
+}
+
+Bird::~Bird()
+{
+	m_body = nullptr;
 }
 
 void Bird::Launch(float _scale, sf::Vector2f _position, b2World& _world)
@@ -86,13 +91,13 @@ void Bird::UseSpecialAbility(float _scale)
 		switch (this->m_birdtype)
 		{
 		case BIRDTYPE::YELLOWBIRD: //Special ability go zoom zoom
-			this->m_body->ApplyLinearImpulse(b2Vec2(this->m_body->GetLinearVelocity().x * (_scale/15.0f), this->m_body->GetLinearVelocity().y * (_scale / 15.0f))
+			this->m_body->ApplyLinearImpulse(b2Vec2(this->m_body->GetLinearVelocity().x * (_scale), this->m_body->GetLinearVelocity().y * (_scale))
 													, this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::GREENBIRD: //The boomerang bird. No-U turn around.
-			this->m_body->ApplyAngularImpulse(1.5f, true);
+			this->m_body->ApplyAngularImpulse(1.0f, true);
 			this->m_body->SetLinearVelocity(b2Vec2(0.0f, this->m_body->GetLinearVelocity().y));
-			this->m_body->ApplyLinearImpulse(b2Vec2(-30.0f, 0.0f), this->m_body->GetPosition(), true);
+			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 100.0f), this->m_body->GetPosition(), true);
 			break;
 
 		}

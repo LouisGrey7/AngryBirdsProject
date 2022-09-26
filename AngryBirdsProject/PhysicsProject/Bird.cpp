@@ -19,7 +19,7 @@ Bird::Bird(int _BirdType)
 		break;
 	case 3:
 		m_texture.loadFromFile("Resources/Sprites/Goon4.png");
-		m_birdtype = BIRDTYPE::REDBIRD; //PLACEHOLDER
+		m_birdtype = BIRDTYPE::BLUEBIRD; 
 		break;
 	case 4:
 		m_texture.loadFromFile("Resources/Sprites/Goon5.png");
@@ -99,7 +99,8 @@ void Bird::UseSpecialAbility(float _scale)
 			this->m_body->SetLinearVelocity(b2Vec2(0.0f, this->m_body->GetLinearVelocity().y));
 			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 100.0f), this->m_body->GetPosition(), true);
 			break;
-
+		case BIRDTYPE::BLUEBIRD:
+			
 		}
 	}
 	m_AbilityActivated = false;

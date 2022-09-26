@@ -7,7 +7,8 @@ enum class BIRDTYPE
 {
 	REDBIRD,
 	YELLOWBIRD,
-	GREENBIRD
+	GREENBIRD,
+	BLUEBIRD
 };
 
 class Bird

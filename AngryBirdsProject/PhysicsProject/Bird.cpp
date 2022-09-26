@@ -45,6 +45,7 @@ Bird::Bird(int _BirdType)
 
 Bird::~Bird()
 {
+	m_body->DestroyFixture(m_body->GetFixtureList());
 	m_body = nullptr;
 }
 
@@ -100,7 +101,7 @@ void Bird::UseSpecialAbility(float _scale)
 			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 100.0f), this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::BLUEBIRD:
-			
+			break;
 		}
 	}
 	m_AbilityActivated = false;

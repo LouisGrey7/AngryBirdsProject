@@ -31,7 +31,7 @@ int main()
             {
                 window.close();
             }
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
             {
                 level->Unload();
                 level->Load(Stage::STAGE2);

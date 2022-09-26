@@ -75,16 +75,26 @@ void Level::Load(Stage _level)
         //3 dynamic balls
         for (int i = 0; i < 3; ++i)
         {
-            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Goon5.png", m_world));
+
+            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+
         }
 
         break;
     case STAGE2:
 
+
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+
+
         //3 dynamic balls
         for (int i = 0; i < 3; ++i)
         {
-            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
         }
 
         break;
@@ -94,7 +104,7 @@ void Level::Load(Stage _level)
         //3 dynamic balls
         for (int i = 0; i < 3; ++i)
         {
-            m_objects.push_back(new Object(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
+            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
         }
 
         break;
@@ -109,14 +119,20 @@ void Level::Unload()
     {
         m_world->DestroyBody(m_objects[i]->GetBody());
     }
+    for (int i = 0; i < m_birds.size(); ++i)
+    {
+        //m_world->DestroyBody(m_birds[i]->GetBody());    THROWING ERROR
+    }
     m_objects.clear();
     m_birds.clear();
+    m_enemies.clear();
 
 }
 
 void Level::Render(sf::RenderWindow& _window, float _scale)
 {
 
+    m_ground->Render(_window, _scale);
 
     for (int i = 0; i < m_objects.size(); ++i)
     {
@@ -126,8 +142,10 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
     {
         m_birds[i]->Render(_window, _scale);
     }
-
-    m_ground->Render(_window, _scale);
+    for (int i = 0; i < m_enemies.size(); ++i)
+    {
+        m_enemies[i]->Render(_window, _scale);
+    }
     m_catapult->Render(_window);
 
 }

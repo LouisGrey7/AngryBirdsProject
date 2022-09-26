@@ -148,6 +148,7 @@
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Catapult.cpp" />
     <ClCompile Include="ContactListener.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Catapult.h" />
     <ClInclude Include="ContactListener.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Object.h" />
   </ItemGroup>

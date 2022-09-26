@@ -34,6 +34,9 @@ public:
 	void Render(sf::RenderWindow& _window, float _scale);
 	void UseSpecialAbility(float _scale);
 
+	inline b2Body* GetBody() { return m_body; };
+
+
 	BIRDTYPE m_birdtype;
 	bool m_Launched = false;
 	bool m_AbilityActivated = false;

@@ -6,6 +6,7 @@
 #include "Object.h"
 #include "Catapult.h"
 #include "Bird.h"
+#include "Enemy.h"
 #include "ContactListener.h"
 
 enum Stage
@@ -27,6 +28,7 @@ private:
 	Object* m_ground;
 	std::vector<Object*> m_objects;
 	std::vector<Bird*> m_birds;
+	std::vector<Enemy*> m_enemies;
 
 public:
 

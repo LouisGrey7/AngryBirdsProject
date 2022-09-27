@@ -44,11 +44,18 @@ Level::~Level()
 
 void Level::MouseButtonPressed(sf::RenderWindow& _window)
 {
-    int randBird = rand() % 3;
-    m_birds.push_back(new Bird(randBird));
+    if(m_ClickCount < 4)
+    {
+        m_catapult->LoadBird(m_birds[m_ClickCount]);
+        m_catapult->MoveBird(_window);
+        m_ClickCount += 1;
+    }
+    else if (m_ClickCount == 4)
+    {
+        std::cout << "USED ALL BIRDS!" << std::endl;
+    }
 
-    m_catapult->LoadBird(m_birds[m_birds.size() - 1]);
-    m_catapult->MoveBird(_window);
+    
 }
 
 void Level::MouseButtonReleased()
@@ -63,18 +70,29 @@ void Level::MouseMoved(sf::RenderWindow& _window)
 
 void Level::Load(Stage _level)
 {
-    int randBird = rand() % 3;
+    
+    int randBird1 = 0;
+    int randBird2 = 1;
+    int randBird3 = 2;
+    int randBird4 = 2;
+    //int randBird4 = rand() % 3;
 
     switch (_level)
     {
 
     case STAGE1:
+        m_ClickCount = 0;
 
         m_objects.push_back(new Object(sf::Vector2f(800, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1100, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-
+        
+        
+        m_birds.push_back(new Bird(randBird1));
+        m_birds.push_back(new Bird(randBird2));
+        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird4));
 
 
         //3 dynamic balls
@@ -88,6 +106,7 @@ void Level::Load(Stage _level)
         break;
     case STAGE2:
 
+        m_ClickCount = 0;
 
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
@@ -105,6 +124,7 @@ void Level::Load(Stage _level)
         break;
     case STAGE3:
 
+        m_ClickCount = 0;
 
         //3 dynamic balls
         for (int i = 0; i < 3; ++i)

@@ -8,7 +8,7 @@
 int main()
 {
     const double SCALE = 30.0;
-
+ 
 
     //window
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Angry Birds");
@@ -41,8 +41,9 @@ int main()
             {
                 case sf::Event::MouseButtonPressed:
                 {
-
                     level->MouseButtonPressed(window);
+                        
+
                     break;
 
                 }

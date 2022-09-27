@@ -29,7 +29,7 @@ private:
 	std::vector<Object*> m_objects;
 	std::vector<Bird*> m_birds;
 	std::vector<Enemy*> m_enemies;
-
+	int m_ClickCount = 0;
 
 public:
 

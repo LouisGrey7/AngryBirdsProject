@@ -239,23 +239,6 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
                 m_birds[i]->m_AbilityActivated = true;
             }
         }
-        
-        if (m_birds.front()->m_birdtype == BIRDTYPE::GREENBIRD)
-        {
-            if ((float)m_birds.front()->m_sprite.getPosition().x > 1200.0f && !m_birds.front()->m_AbilityActivated)
-            {
-                m_birds[i]->UseSpecialAbility(_scale);
-                m_birds[i]->m_AbilityActivated = true;
-            }
-        }
-        else
-        {
-            if ((float)m_birds.front()->m_sprite.getPosition().x > 400.0f && !m_birds.front()->m_AbilityActivated)
-            {
-                m_birds[i]->UseSpecialAbility(_scale);
-                m_birds[i]->m_AbilityActivated = true;
-            }
-        }
     }
     for (int i = 0; i < m_enemies.size(); ++i)
     {
@@ -270,11 +253,11 @@ void Level::Update()
     m_world->Step(1.0f / 60.0f, 8, 3);
     for (int i = 0; i < m_birds.size(); ++i)
     {
-        if (m_birds.front()->m_sprite.getPosition().x >= 1290.0f || m_birds.front()->m_sprite.getPosition().x <= -10.0f
-            || m_birds.front()->m_sprite.getPosition().y >= 730.0f || m_birds.front()->m_sprite.getPosition().y <= -10.0f)
+        if (m_birds[i]->m_sprite.getPosition().x >= 1290.0f || m_birds[i]->m_sprite.getPosition().x <= -10.0f
+            || m_birds[i]->m_sprite.getPosition().y >= 730.0f || m_birds[i]->m_sprite.getPosition().y <= -10.0f)
         {
-            //Delete the object somehow
-            //m_world->DestroyBody(m_birds[i]->m_body);
+            //Delete the object that goes out of bounds (OFF SCREEN)
+            m_birds[i]->GetBody()->DestroyFixture(m_birds[i]->GetBody()->GetFixtureList());
             
         }
     }

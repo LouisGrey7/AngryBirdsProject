@@ -10,7 +10,6 @@ private:
 
 	// Box 2D Stuff
 	b2BodyDef m_bodyDef;
-	b2Body* m_body;
 
 	b2PolygonShape m_shape;
 	b2FixtureDef m_fixtureDef;
@@ -22,6 +21,7 @@ private:
 
 public:
 
+	b2Body* m_body;
 	Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world);
 	~Object();
 

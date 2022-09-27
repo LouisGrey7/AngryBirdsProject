@@ -1,15 +1,17 @@
 #pragma once
+#include <iostream>
+
 #include "Object.h"
 class Enemy :
     public Object
 {
 private:
 
-    int m_health = 3;
 
 
 
 public:
+    int m_health = 3;
     using Object::Object;
 
     void TakeDamage();

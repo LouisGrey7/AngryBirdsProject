@@ -16,7 +16,7 @@ Level::Level(float _scale)
     m_catapult = new Catapult(sf::Vector2f(120, 550));
 
 
-    Load(STAGE1);
+    Load(STAGE3);
 
 }
 
@@ -83,55 +83,91 @@ void Level::Load(Stage _level)
     case STAGE1:
         m_ClickCount = 0;
 
-        m_objects.push_back(new Object(sf::Vector2f(800, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        //Blocks
+        m_objects.push_back(new Object(sf::Vector2f(750, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(750, 400), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1100, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1100, 400), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(925, 475), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(925, 350), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
+
         
-        
+        //Birds
         m_birds.push_back(new Bird(randBird1));
         m_birds.push_back(new Bird(randBird2));
         m_birds.push_back(new Bird(randBird3));
         m_birds.push_back(new Bird(randBird4));
 
+        //Enemies
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
 
-        //3 dynamic balls
-        for (int i = 0; i < 3; ++i)
-        {
-
-            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
-
-        }
+        
 
         break;
     case STAGE2:
 
         m_ClickCount = 0;
 
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        //Blocks
+        m_objects.push_back(new Object(sf::Vector2f(800, 400), 30.0f, b2BodyType::b2_staticBody, "LongBlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 575), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+
+        m_objects.push_back(new Object(sf::Vector2f(1150, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1150, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1150, 575), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
 
 
-        //3 dynamic balls
-        for (int i = 0; i < 3; ++i)
-        {
-            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
-        }
+
+        //Birds
+        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird3));
+
+        //Enemies
+        m_enemies.push_back(new Enemy(sf::Vector2f(950.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1150.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        
 
         break;
     case STAGE3:
 
         m_ClickCount = 0;
 
-        //3 dynamic balls
-        for (int i = 0; i < 3; ++i)
-        {
-            m_enemies.push_back(new Enemy(sf::Vector2f(800.0f + i * 150.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Ball.png", m_world));
-        }
+        //Blocks
+        m_objects.push_back(new Object(sf::Vector2f(750, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(750, 400), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1100, 600), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1100, 400), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(925, 475), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(925, 350), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
 
+        //Birds
+        m_birds.push_back(new Bird(randBird1));
+        m_birds.push_back(new Bird(randBird2));
+        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird4));
+
+        //Enemies
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         break;
 
     }
@@ -146,7 +182,7 @@ void Level::Unload()
     }
     for (int i = 0; i < m_birds.size(); ++i)
     {
-       m_world->DestroyBody(m_birds[i]->GetBody());
+       //m_world->DestroyBody(m_birds[i]->GetBody());
     }
     for (int i = 0; i < m_enemies.size(); ++i)
     {
@@ -193,16 +229,16 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
         {
             if ((float)m_birds.front()->m_sprite.getPosition().x > 1200.0f && !m_birds.front()->m_AbilityActivated)
             {
-                m_birds.front()->UseSpecialAbility(_scale);
-                m_birds.front()->m_AbilityActivated = true;
+                m_birds[i]->UseSpecialAbility(_scale);
+                m_birds[i]->m_AbilityActivated = true;
             }
         }
         else
         {
             if ((float)m_birds.front()->m_sprite.getPosition().x > 400.0f && !m_birds.front()->m_AbilityActivated)
             {
-                m_birds.front()->UseSpecialAbility(_scale);
-                m_birds.front()->m_AbilityActivated = true;
+                m_birds[i]->UseSpecialAbility(_scale);
+                m_birds[i]->m_AbilityActivated = true;
             }
         }
     }
@@ -228,4 +264,8 @@ void Level::Update()
         }
     }
     
+    for (auto enemy : m_enemies)
+    {
+        enemy->Destroy();
+    }
 }

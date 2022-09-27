@@ -44,23 +44,11 @@ Level::~Level()
 
 void Level::MouseButtonPressed(sf::RenderWindow& _window)
 {
-    //int randBird = rand() % 3;
-    //m_birds.push_back(new Bird(randBird));
+    int randBird = rand() % 3;
+    m_birds.push_back(new Bird(randBird));
 
-    //m_catapult->LoadBird(m_birds[m_birds.size() - 1]);
-
-    if (m_birdqueue.size() != 0)
-    {
-        m_catapult->LoadBird(m_birdqueue.front());
-    }
-    else
-    {
-
-        std::cout << "empty queue" << std::endl;
-    }
+    m_catapult->LoadBird(m_birds[m_birds.size() - 1]);
     m_catapult->MoveBird(_window);
-
-    m_birdqueue.pop();
 }
 
 void Level::MouseButtonReleased()
@@ -87,10 +75,6 @@ void Level::Load(Stage _level)
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "LongBlockH.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 300), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
 
-        m_birdqueue.push(new Bird(randBird));
-        m_birdqueue.push(new Bird(randBird));
-        m_birdqueue.push(new Bird(randBird));
-        m_birdqueue.push(new Bird(randBird));
 
 
         //3 dynamic balls
@@ -158,7 +142,6 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
 {
 
     m_ground->Render(_window, _scale);
-    m_birdqueue.front()->Render(_window, _scale);
 
     for (int i = 0; i < m_objects.size(); ++i)
     {
@@ -166,40 +149,40 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
     }
     for (int i = 0; i < m_birds.size(); ++i)
     {
-        //m_birds[i]->Render(_window, _scale);
+        m_birds[i]->Render(_window, _scale);
 
 
-        //if(m_birds[i]->m_birdtype == BIRDTYPE::GREENBIRD)
-        //{
-        //    if ((float)m_birds[i]->m_sprite.getPosition().x > 1200.0f && !m_birds[i]->m_AbilityActivated)
-        //    {
-        //        m_birds[i]->UseSpecialAbility(_scale);
-        //        m_birds[i]->m_AbilityActivated = true;
-        //    }
-        //}
-        //else
-        //{
-        //    if ((float)m_birds[i]->m_sprite.getPosition().x > 400.0f && !m_birds[i]->m_AbilityActivated)
-        //    {
-        //        m_birds[i]->UseSpecialAbility(_scale);
-        //        m_birds[i]->m_AbilityActivated = true;
-        //    }
-        //}
-        
-        if (m_birdqueue.front()->m_birdtype == BIRDTYPE::GREENBIRD)
+        if(m_birds[i]->m_birdtype == BIRDTYPE::GREENBIRD)
         {
-            if ((float)m_birdqueue.front()->m_sprite.getPosition().x > 1200.0f && !m_birdqueue.front()->m_AbilityActivated)
+            if ((float)m_birds[i]->m_sprite.getPosition().x > 1200.0f && !m_birds[i]->m_AbilityActivated)
             {
-                m_birdqueue.front()->UseSpecialAbility(_scale);
-                m_birdqueue.front()->m_AbilityActivated = true;
+                m_birds[i]->UseSpecialAbility(_scale);
+                m_birds[i]->m_AbilityActivated = true;
             }
         }
         else
         {
-            if ((float)m_birdqueue.front()->m_sprite.getPosition().x > 400.0f && !m_birdqueue.front()->m_AbilityActivated)
+            if ((float)m_birds[i]->m_sprite.getPosition().x > 400.0f && !m_birds[i]->m_AbilityActivated)
             {
-                m_birdqueue.front()->UseSpecialAbility(_scale);
-                m_birdqueue.front()->m_AbilityActivated = true;
+                m_birds[i]->UseSpecialAbility(_scale);
+                m_birds[i]->m_AbilityActivated = true;
+            }
+        }
+        
+        if (m_birds.front()->m_birdtype == BIRDTYPE::GREENBIRD)
+        {
+            if ((float)m_birds.front()->m_sprite.getPosition().x > 1200.0f && !m_birds.front()->m_AbilityActivated)
+            {
+                m_birds.front()->UseSpecialAbility(_scale);
+                m_birds.front()->m_AbilityActivated = true;
+            }
+        }
+        else
+        {
+            if ((float)m_birds.front()->m_sprite.getPosition().x > 400.0f && !m_birds.front()->m_AbilityActivated)
+            {
+                m_birds.front()->UseSpecialAbility(_scale);
+                m_birds.front()->m_AbilityActivated = true;
             }
         }
     }
@@ -216,8 +199,8 @@ void Level::Update()
     m_world->Step(1.0f / 60.0f, 8, 3);
     for (int i = 0; i < m_birds.size(); ++i)
     {
-        if (m_birdqueue.front()->m_sprite.getPosition().x >= 1290.0f || m_birdqueue.front()->m_sprite.getPosition().x <= -10.0f
-            || m_birdqueue.front()->m_sprite.getPosition().y >= 730.0f || m_birdqueue.front()->m_sprite.getPosition().y <= -10.0f)
+        if (m_birds.front()->m_sprite.getPosition().x >= 1290.0f || m_birds.front()->m_sprite.getPosition().x <= -10.0f
+            || m_birds.front()->m_sprite.getPosition().y >= 730.0f || m_birds.front()->m_sprite.getPosition().y <= -10.0f)
         {
             //Delete the object somehow
             //m_world->DestroyBody(m_birds[i]->m_body);

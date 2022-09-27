@@ -3,8 +3,6 @@
 #include "SFML/Graphics.hpp"
 #include "box2d\box2d.h"
 
-#include <queue>
-
 #include "Object.h"
 #include "Catapult.h"
 #include "Bird.h"
@@ -32,7 +30,6 @@ private:
 	std::vector<Bird*> m_birds;
 	std::vector<Enemy*> m_enemies;
 
-	std::queue<Bird*> m_birdqueue;
 
 public:
 

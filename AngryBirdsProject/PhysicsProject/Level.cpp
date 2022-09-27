@@ -74,7 +74,7 @@ void Level::Load(Stage _level)
     int randBird1 = 0;
     int randBird2 = 1;
     int randBird3 = 2;
-    int randBird4 = 2;
+    int randBird4 = 3;
     //int randBird4 = rand() % 3;
 
     switch (_level)

@@ -18,7 +18,7 @@ Bird::Bird(int _BirdType)
 		m_birdtype = BIRDTYPE::GREENBIRD;
 		break;
 	case 3:
-		m_texture.loadFromFile("Resources/Sprites/Goon4.png");
+		m_texture.loadFromFile("Resources/Sprites/BlueBird.png");
 		m_birdtype = BIRDTYPE::BLUEBIRD; 
 		break;
 	case 4:

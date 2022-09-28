@@ -41,6 +41,8 @@ Bird::Bird(int _BirdType)
 	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
 
+	//m_body->GetUserData().pointer = (uintptr_t)this;
+
 }
 
 
@@ -48,6 +50,7 @@ Bird::Bird(int _BirdType)
 Bird::~Bird()
 {
 	m_body->DestroyFixture(m_body->GetFixtureList());
+	m_body->GetWorld()->DestroyBody(m_body);
 	m_body = nullptr;
 }
 

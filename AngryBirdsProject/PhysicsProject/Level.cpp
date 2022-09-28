@@ -270,13 +270,13 @@ void Level::Update()
         enemy->Destroy();
     }
 
-    if (m_birdstoDestroy.size() != 0)
+
+    if (m_birdstoDestroy.size() != 0 && !m_world->IsLocked())
     {
         for (int i = 0; i < m_birdstoDestroy.size(); ++i)
         {
-            //m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
-            //m_birdstoDestroy.clear();
+            m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
+            m_birdstoDestroy.clear();
         }
     }
-
 }

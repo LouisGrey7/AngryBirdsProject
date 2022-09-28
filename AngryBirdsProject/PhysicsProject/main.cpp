@@ -9,19 +9,15 @@ int main()
 {
     const double SCALE = 30.0;
  
-
     //window
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Angry Birds");
     window.setFramerateLimit(60);
 
-
     Level* level = new Level(SCALE);
 
-  
     while (window.isOpen())
     {
         window.clear(sf::Color(97,136,235));
-
 
         //Poll Events
         sf::Event event;
@@ -31,7 +27,7 @@ int main()
             {
                 window.close();
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) //Pressing L will unload current and load next stage
             {
                 level->Unload();
                 if (level->GetCurrentStage() == Stage::STAGE1)
@@ -51,7 +47,7 @@ int main()
 
             switch (event.type)
             {
-                case sf::Event::MouseButtonPressed:
+                case sf::Event::MouseButtonPressed: //Triggers bird being loaded into catapult
                 {
                     level->MouseButtonPressed(window);
                         
@@ -59,14 +55,14 @@ int main()
                     break;
 
                 }
-                case sf::Event::MouseButtonReleased:
+                case sf::Event::MouseButtonReleased: //Fires the bird
                 {
 
                     level->MouseButtonReleased();
                     break;
 
                 }
-                case sf::Event::MouseMoved:
+                case sf::Event::MouseMoved: //Updates the bird position if on screen when in catapult
                 {
 
                     level->MouseMoved(window);

@@ -18,7 +18,7 @@ Bird::Bird(int _BirdType)
 		m_birdtype = BIRDTYPE::GREENBIRD;
 		break;
 	case 3:
-		m_texture.loadFromFile("Resources/Sprites/Goon4.png");
+		m_texture.loadFromFile("Resources/Sprites/BlueBird.png");
 		m_birdtype = BIRDTYPE::BLUEBIRD; 
 		break;
 	case 4:
@@ -40,6 +40,11 @@ Bird::Bird(int _BirdType)
 	float originX = (m_texture.getSize().x / 2.0f);
 	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
+
+}
+
+Bird::Bird(int _BirdType, float _XPos, float YPos)
+{
 
 }
 
@@ -101,6 +106,7 @@ void Bird::UseSpecialAbility(float _scale)
 			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 250.0f), this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::BLUEBIRD:
+			//new Bird(BIRDTYPE::BLUEBIRD, this->GetBody()->GetPosition().x, this->GetBody()->GetPosition().y + 50);
 			break;
 		}
 	}

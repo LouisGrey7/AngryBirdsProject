@@ -43,7 +43,10 @@ Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::
 
 Object::~Object()
 {
-	m_body->GetWorld()->DestroyBody(m_body);
+	if (m_body != nullptr)
+	{
+		m_body->GetWorld()->DestroyBody(m_body);
+	}
 	m_body = nullptr;
 }
 

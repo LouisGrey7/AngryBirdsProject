@@ -51,7 +51,6 @@ Bird::Bird(BIRDTYPE _BirdType)
 	float originY = (m_texture.getSize().y / 2.0f);
 	m_sprite.setOrigin(originX, originY);
 
-	//m_body->GetUserData().pointer = (uintptr_t)this;
 
 }
 Bird::~Bird()
@@ -111,7 +110,6 @@ void Bird::UseSpecialAbility(float _scale)
 			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 250.0f), this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::BLUEBIRD:
-			
 			break;
 		}
 	}

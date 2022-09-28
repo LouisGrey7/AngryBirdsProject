@@ -252,6 +252,19 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
                 m_birds[i]->m_AbilityActivated = true;
             }
         }
+        else if (m_birds[i]->m_birdtype == BIRDTYPE::BLUEBIRD)
+        {
+            if ((float)m_birds[i]->m_sprite.getPosition().x > 800.0f && !m_birds[i]->m_AbilityActivated)
+            {
+                m_objects.push_back(new Object(sf::Vector2f(m_birds[i]->m_sprite.getPosition().x, m_birds[i]->m_sprite.getPosition().y), 30.0f, b2BodyType::b2_dynamicBody, "Bomb.png", m_world));
+                m_objects.push_back(new Object(sf::Vector2f(m_birds[i]->m_sprite.getPosition().x + 25, m_birds[i]->m_sprite.getPosition().y), 30.0f, b2BodyType::b2_dynamicBody, "Bomb.png", m_world));
+                m_objects.push_back(new Object(sf::Vector2f(m_birds[i]->m_sprite.getPosition().x + 50, m_birds[i]->m_sprite.getPosition().y), 30.0f, b2BodyType::b2_dynamicBody, "Bomb.png", m_world));
+                m_objects.push_back(new Object(sf::Vector2f(m_birds[i]->m_sprite.getPosition().x + 75, m_birds[i]->m_sprite.getPosition().y), 30.0f, b2BodyType::b2_dynamicBody, "Bomb.png", m_world));
+
+                m_birds[i]->UseSpecialAbility(_scale);
+                m_birds[i]->m_AbilityActivated = true;
+            }
+        }
         else
         {
             if ((float)m_birds[i]->m_sprite.getPosition().x > 400.0f && !m_birds[i]->m_AbilityActivated)

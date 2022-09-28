@@ -70,7 +70,7 @@ void Level::MouseMoved(sf::RenderWindow& _window)
 
 void Level::Load(Stage _level)
 {
-    
+    m_CurrentStage = _level;
     int randBird1 = 0;
     int randBird2 = 1;
     int randBird3 = 2;

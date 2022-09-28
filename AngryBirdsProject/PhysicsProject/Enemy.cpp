@@ -13,13 +13,23 @@
 //
 #include "Enemy.h"
 
-
 //Take damage on fall or on hit by bird
 void Enemy::TakeDamage()
 {
 
 	m_health--;
 
+}
+
+void Enemy::Destroy()
+{
+
+	if (m_health <= 0)
+	{
+
+		//m_body->GetWorld()->DestroyBody(m_body);
+
+	}
 }
 
 void Enemy::StartContact(Object* other)

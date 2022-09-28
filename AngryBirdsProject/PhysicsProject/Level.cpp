@@ -207,8 +207,6 @@ void Level::Unload()
     for (int i = 0; i < m_objects.size(); ++i)
     {
         m_world->DestroyBody(m_objects[i]->GetBody());
-        //m_objectstoDestroy.push_back(m_objects[i]);
-
     }
     for (int i = 0; i < m_birds.size(); ++i)
     {
@@ -217,9 +215,7 @@ void Level::Unload()
     }
     for (int i = 0; i < m_enemies.size(); ++i)
     {
-        m_enemiestoDestroy.push_back(m_enemies[i]);
-
-        //m_world->DestroyBody(m_enemies[i]->GetBody()); 
+        m_world->DestroyBody(m_enemies[i]->GetBody()); 
     }
     m_objects.clear();
     m_birds.clear();
@@ -264,64 +260,38 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
     }
     m_catapult->Render(_window);
 
-
 }
 
 void Level::Update()
 {
-
-
     // world step
     m_world->Step(1.0f / 60.0f, 8, 3);
 
-    for (int i = 0; i < m_birds.size(); ++i)
-    {
-        if (m_birds[i]->m_sprite.getPosition().x >= 1290.0f || m_birds[i]->m_sprite.getPosition().x <= -10.0f
-            || m_birds[i]->m_sprite.getPosition().y >= 730.0f || m_birds[i]->m_sprite.getPosition().y <= -10.0f)
-        {
-            //Delete the object that goes out of bounds (OFF SCREEN)
-            //m_birdstoDestroy.push_back(m_birds[i]);
-            //m_birds.erase(m_birds.begin() + i);
-
-            
-        }
-    }
+    //for (int i = 0; i < m_birds.size(); ++i)
+    //{
+    //    if (m_birds[i]->m_sprite.getPosition().x >= 1290.0f || m_birds[i]->m_sprite.getPosition().x <= -10.0f
+    //        || m_birds[i]->m_sprite.getPosition().y >= 730.0f || m_birds[i]->m_sprite.getPosition().y <= -10.0f)
+    //    {
+    //        //Delete the object that goes out of bounds (OFF SCREEN)
+    //        m_birds[i]->GetBody()->DestroyFixture(m_birds[i]->GetBody()->GetFixtureList());
+    //        
+    //    }
+    //}
     
-
-    for (int i = 0; i < m_enemies.size(); ++i)
+    for (auto enemy : m_enemies)
     {
-        if (m_enemies[i]->m_health <= 0)
-        {
-            m_enemiestoDestroy.push_back(m_enemies[i]);
-            m_enemies.erase(m_enemies.begin() + i);
-        }
+        enemy->Destroy();
     }
-    
 
-    if (m_objectstoDestroy.size() != 0 && !m_world->IsLocked())
-    {
-        for (int i = 0; i < m_objectstoDestroy.size(); ++i)
-        {
-            delete m_objectstoDestroy[i];
-        }
-        m_objectstoDestroy.clear();
-    }
 
     if (m_birdstoDestroy.size() != 0 && !m_world->IsLocked())
     {
         for (int i = 0; i < m_birdstoDestroy.size(); ++i)
         {
+            //m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
+            //m_birdstoDestroy.erase(m_birdstoDestroy.begin() + i);
             delete m_birdstoDestroy[i];
         }
             m_birdstoDestroy.clear();
-    }
-
-    if (m_enemiestoDestroy.size() != 0 && !m_world->IsLocked())
-    {
-        for (int i = 0; i < m_enemiestoDestroy.size(); ++i)
-        {
-            delete m_enemiestoDestroy[i];
-        }
-        m_enemiestoDestroy.clear();
     }
 }

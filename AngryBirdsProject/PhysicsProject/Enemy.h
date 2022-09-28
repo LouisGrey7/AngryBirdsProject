@@ -24,10 +24,11 @@ private:
 
 
 public:
-    int m_health = 5;
+    int m_health = 3;
     using Object::Object;
 
     void TakeDamage();
+    void Destroy();
 
     void StartContact(Object* other) override;
     void EndContact(Object* other) override;

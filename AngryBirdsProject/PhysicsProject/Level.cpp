@@ -29,7 +29,7 @@ Level::Level(float _scale)
     m_catapult = new Catapult(sf::Vector2f(120, 550));
 
 
-    Load(STAGE3);
+    Load(STAGE1);
 
 }
 
@@ -112,12 +112,12 @@ void Level::Load(Stage _level)
         m_birds.push_back(new Bird(randBird4));
 
         //Enemies
-        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 400.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 275.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 275.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 275.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(800.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(900.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(1000.0f, 600.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));

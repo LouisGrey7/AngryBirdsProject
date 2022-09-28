@@ -23,7 +23,7 @@ Level::Level(float _scale)
 Level::~Level()
 {
     //delete all objects here
-    Unload();
+    //Unload();
 
     //delete contact listener
     if (m_contactListener != nullptr)
@@ -275,8 +275,10 @@ void Level::Update()
     {
         for (int i = 0; i < m_birdstoDestroy.size(); ++i)
         {
-            m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
-            m_birdstoDestroy.clear();
+            //m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
+            //m_birdstoDestroy.erase(m_birdstoDestroy.begin() + i);
+            delete m_birdstoDestroy[i];
         }
+            m_birdstoDestroy.clear();
     }
 }

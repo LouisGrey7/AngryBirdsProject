@@ -29,7 +29,6 @@ Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::
 
 Object::~Object()
 {
-	m_body->DestroyFixture(m_body->GetFixtureList());
 	m_body->GetWorld()->DestroyBody(m_body);
 	m_body = nullptr;
 

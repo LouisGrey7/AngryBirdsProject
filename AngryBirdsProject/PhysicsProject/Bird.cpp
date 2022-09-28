@@ -49,8 +49,11 @@ Bird::Bird(int _BirdType)
 
 Bird::~Bird()
 {
-	m_body->DestroyFixture(m_body->GetFixtureList());
-	m_body->GetWorld()->DestroyBody(m_body);
+	//m_body->DestroyFixture(m_body->GetFixtureList());
+	if (m_body != nullptr)
+	{
+		m_body->GetWorld()->DestroyBody(m_body);
+	}
 	m_body = nullptr;
 }
 

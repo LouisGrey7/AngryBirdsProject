@@ -25,7 +25,7 @@ Catapult::Catapult(sf::Vector2f _position)
 	m_sprite.setPosition(_position);
 
 	m_firingOrigin = _position;
-	m_firingOrigin.y -= m_texture.getSize().y / 2;
+	m_firingOrigin.y -= m_texture.getSize().y / 2.0f;
 
 }
 

@@ -249,6 +249,10 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
                 m_birds[i]->m_AbilityActivated = true;
             }
         }
+        if (m_birds[i]->m_birdtype == BIRDTYPE::BLUEBIRD)
+        {
+            BirdRope birdRope = BirdRope(0.01f, 1.0f, m_ground, m_birds[i]);
+        }
         else
         {
             if ((float)m_birds[i]->m_sprite.getPosition().x > 400.0f && !m_birds[i]->m_AbilityActivated)

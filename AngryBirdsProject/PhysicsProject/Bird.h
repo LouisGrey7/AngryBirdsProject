@@ -15,7 +15,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "box2d\box2d.h"
-
+#include "BirdRope.h"
 //Four bird types, with room for more if wanting to add.
 enum class BIRDTYPE
 {

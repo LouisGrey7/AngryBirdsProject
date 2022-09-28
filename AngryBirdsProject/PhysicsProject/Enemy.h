@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Enemy.h
+// Description	: Enemy class, Miss Pig has a manager and here they are...
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #pragma once
 #include <iostream>
 

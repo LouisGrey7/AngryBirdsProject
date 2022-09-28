@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Bird.cpp
+// Description	: Functionality for Bird class
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #include "Bird.h"
 
 //Creates a bird based on the given type. Loads image from file

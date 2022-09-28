@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Level.cpp
+// Description	: Impliments functionality for Level class
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #include "Level.h"
 #include <iostream>
 
@@ -71,10 +84,10 @@ void Level::MouseMoved(sf::RenderWindow& _window)
 void Level::Load(Stage _level)
 {
     m_CurrentStage = _level;
-    int randBird1 = 0;
-    int randBird2 = 1;
-    int randBird3 = 2;
-    int randBird4 = 3;
+    BIRDTYPE randBird1 = BIRDTYPE::REDBIRD;
+    BIRDTYPE randBird2 = BIRDTYPE::YELLOWBIRD;
+    BIRDTYPE randBird3 = BIRDTYPE::GREENBIRD;
+    BIRDTYPE randBird4 = BIRDTYPE::BLUEBIRD;
     //int randBird4 = rand() % 3;
 
     switch (_level)

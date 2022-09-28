@@ -152,15 +152,15 @@ void Level::Load(Stage _level)
         m_objects.push_back(new Object(sf::Vector2f(650, 150), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(650, 50), 30.0f, b2BodyType::b2_dynamicBody, "BlockV.png", m_world));
 
-        m_objects.push_back(new Object(sf::Vector2f(750, 500), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(750, 300), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(750, 100), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 550), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 350), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 150), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(1150, 500), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(1150, 300), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(1150, 100), 30.0f, b2BodyType::b2_staticBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(750, 500), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(750, 300), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(750, 100), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 550), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 350), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(950, 150), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1150, 500), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1150, 300), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(1150, 100), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
 
 
         //Birds
@@ -197,6 +197,7 @@ void Level::Unload()
     }
     for (int i = 0; i < m_birds.size(); ++i)
     {
+        m_birdstoDestroy.push_back(m_birds[i]);
        //m_world->DestroyBody(m_birds[i]->GetBody());
     }
     for (int i = 0; i < m_enemies.size(); ++i)
@@ -266,4 +267,10 @@ void Level::Update()
     {
         enemy->Destroy();
     }
+
+    for (auto bird : m_birdstoDestroy)
+    {
+        m_world->DestroyBody(bird->GetBody());
+    }
+
 }

@@ -23,7 +23,7 @@ public:
 
 	b2Body* m_body;
 	Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world);
-	~Object();
+	virtual ~Object();
 
 	
 	void Render(sf::RenderWindow& _window, float _scale);

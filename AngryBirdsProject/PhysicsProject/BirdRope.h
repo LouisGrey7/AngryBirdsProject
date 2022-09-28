@@ -18,7 +18,7 @@ private:
 	sf::Vertex line[2];
 
 
-
+	//Math functions used within class
 	inline float length(const sf::Vector2f& source)
 	{
 		auto R_x = source.x;

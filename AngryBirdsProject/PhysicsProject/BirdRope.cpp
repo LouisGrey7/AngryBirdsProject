@@ -5,7 +5,7 @@ BirdRope::BirdRope(float _SpringConstant, float _RestLength, Bird* _Anchor, Bird
 	m_RestLength = _RestLength;
 	m_Anchor = _Anchor;
 	m_Bob = _Bob;
-
+	//Need to figure out where to make second bird on rope
 	line[0].position = sf::Vector2f(m_Anchor->GetBody()->GetPosition().x, m_Anchor->GetBody()->GetPosition().y);
 	line[0].color = sf::Color::White;
 	line[1].position = sf::Vector2f(m_Bob->GetBody()->GetPosition().x + 50, m_Bob->GetBody()->GetPosition().y + 50);

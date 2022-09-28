@@ -2,6 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "box2d\box2d.h"
+#include "BirdRope.h"
 
 enum class BIRDTYPE
 {
@@ -30,7 +31,6 @@ public:
 	b2Body* m_body;
 
 	Bird(int _BirdType);
-	Bird(int _BirdType, float _XPos, float YPos);
 	~Bird();
 
 	void Launch(float _scale, sf::Vector2f _position, b2World& _world);

@@ -43,10 +43,7 @@ Bird::Bird(int _BirdType)
 
 }
 
-Bird::Bird(int _BirdType, float _XPos, float YPos)
-{
 
-}
 
 Bird::~Bird()
 {
@@ -106,7 +103,7 @@ void Bird::UseSpecialAbility(float _scale)
 			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 250.0f), this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::BLUEBIRD:
-			//new Bird(BIRDTYPE::BLUEBIRD, this->GetBody()->GetPosition().x, this->GetBody()->GetPosition().y + 50);
+			
 			break;
 		}
 	}

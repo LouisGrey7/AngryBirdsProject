@@ -43,11 +43,6 @@ Bird::Bird(int _BirdType)
 
 }
 
-Bird::Bird(int _BirdType, float _XPos, float YPos)
-{
-
-}
-
 Bird::~Bird()
 {
 	m_body->DestroyFixture(m_body->GetFixtureList());

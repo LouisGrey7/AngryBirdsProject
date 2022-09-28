@@ -198,7 +198,7 @@ void Level::Unload()
     for (int i = 0; i < m_birds.size(); ++i)
     {
         m_birdstoDestroy.push_back(m_birds[i]);
-       //m_world->DestroyBody(m_birds[i]->GetBody());
+        //m_world->DestroyBody(m_birds[i]->GetBody());
     }
     for (int i = 0; i < m_enemies.size(); ++i)
     {
@@ -251,26 +251,32 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
 
 void Level::Update()
 {
+    // world step
     m_world->Step(1.0f / 60.0f, 8, 3);
-    for (int i = 0; i < m_birds.size(); ++i)
-    {
-        if (m_birds[i]->m_sprite.getPosition().x >= 1290.0f || m_birds[i]->m_sprite.getPosition().x <= -10.0f
-            || m_birds[i]->m_sprite.getPosition().y >= 730.0f || m_birds[i]->m_sprite.getPosition().y <= -10.0f)
-        {
-            //Delete the object that goes out of bounds (OFF SCREEN)
-            m_birds[i]->GetBody()->DestroyFixture(m_birds[i]->GetBody()->GetFixtureList());
-            
-        }
-    }
+
+    //for (int i = 0; i < m_birds.size(); ++i)
+    //{
+    //    if (m_birds[i]->m_sprite.getPosition().x >= 1290.0f || m_birds[i]->m_sprite.getPosition().x <= -10.0f
+    //        || m_birds[i]->m_sprite.getPosition().y >= 730.0f || m_birds[i]->m_sprite.getPosition().y <= -10.0f)
+    //    {
+    //        //Delete the object that goes out of bounds (OFF SCREEN)
+    //        m_birds[i]->GetBody()->DestroyFixture(m_birds[i]->GetBody()->GetFixtureList());
+    //        
+    //    }
+    //}
     
     for (auto enemy : m_enemies)
     {
         enemy->Destroy();
     }
 
-    for (auto bird : m_birdstoDestroy)
+    if (m_birdstoDestroy.size() != 0)
     {
-        m_world->DestroyBody(bird->GetBody());
+        for (int i = 0; i < m_birdstoDestroy.size(); ++i)
+        {
+            //m_world->DestroyBody(m_birdstoDestroy[i]->GetBody());
+            //m_birdstoDestroy.clear();
+        }
     }
 
 }

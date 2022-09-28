@@ -1,6 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (AngryBirds.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  ContactListener.cpp
   Level.cpp
-  main.cpp
-  Generating Code...
   AngryBirds.vcxproj -> C:\Projects\Physics Programming\AngryBirdsProject\AngryBirdsProject\x64\Debug\PhysicsProject.exe

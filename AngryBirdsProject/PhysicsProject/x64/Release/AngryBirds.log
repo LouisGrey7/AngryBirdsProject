@@ -1,8 +1,10 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (AngryBirds.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Level.cpp
+﻿  main.cpp
+C:\Users\jmair\Documents\Projects\AngryBirds\AngryBirds\main.cpp(28,55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jmair\Documents\Projects\AngryBirds\AngryBirds\main.cpp(33,60): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\jmair\Documents\Projects\AngryBirds\AngryBirds\main.cpp(46,57): warning C4305: 'argument': truncation from 'double' to 'float'
   Generating code
-  1 of 355 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  0 of 27 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  AngryBirds.vcxproj -> C:\Projects\Physics Programming\AngryBirdsProject\AngryBirdsProject\x64\Release\PhysicsProject.exe
+  AngryBirds.vcxproj -> C:\Users\jmair\Documents\Projects\AngryBirds\x64\Release\AngryBirds.exe

@@ -16,6 +16,9 @@ void ContactListener::BeginContact(b2Contact* contact)
 		bodyuserDataB->StartContact(bodyuserDataA);
 
 	}
+
+
+
 }
 
 void ContactListener::EndContact(b2Contact* contact)

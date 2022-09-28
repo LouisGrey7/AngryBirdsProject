@@ -44,8 +44,6 @@ private:
 	std::vector<Bird*> m_birds;
 	std::vector<Enemy*> m_enemies;
 
-	std::vector<BirdRope> birdropes;
-
 	std::vector<Object*> m_objectstoDestroy;
 	std::vector<Bird*> m_birdstoDestroy;
 	std::vector<Enemy*> m_enemiestoDestroy;

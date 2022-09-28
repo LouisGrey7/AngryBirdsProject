@@ -1,6 +1,20 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Object.cpp
+// Description	: Object class for blocks in the scene
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #include "Object.h"
 #include "iostream"
 
+//Initialises an object in the scene
 Object::Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world)
 {
 	//Set sprite
@@ -31,28 +45,24 @@ Object::~Object()
 {
 	m_body->GetWorld()->DestroyBody(m_body);
 	m_body = nullptr;
-
 }
 
-
+//Renders an object
 void Object::Render(sf::RenderWindow& _window, float _scale)
 {
-
 	m_sprite.setPosition(m_body->GetPosition().x * _scale, m_body->GetPosition().y * _scale);
 	m_sprite.setRotation(m_body->GetAngle() * 180 / b2_pi);
-
 	_window.draw(m_sprite);
-
 }
 
+//FOR DEBUGGING PURPOSES/Overrides with contact listener
 void Object::StartContact(Object* other)
 {
 
-	std::cout << "hit\n" << std::endl;
+	//std::cout << "hit\n" << std::endl;
 }
-
 void Object::EndContact(Object* other)
 {
-	std::cout << "end hit\n" << std::endl;
+	//std::cout << "end hit\n" << std::endl;
 
 }

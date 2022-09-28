@@ -1,3 +1,17 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: main.cpp
+// Description	: Runs the game and takes inputs
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
+
 #include "SFML/Graphics.hpp"
 #include "box2d\box2D.h"
 
@@ -10,7 +24,7 @@ int main()
     const double SCALE = 30.0;
  
     //window
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Angry Birds");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Ugly Borbs");
     window.setFramerateLimit(60);
 
     Level* level = new Level(SCALE);

@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Object.h
+// Description	: Object class for blocks in the scene
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #pragma once
 
 #include "SFML/Graphics.hpp"

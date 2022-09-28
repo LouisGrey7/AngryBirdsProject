@@ -34,7 +34,19 @@ int main()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
             {
                 level->Unload();
-                level->Load(Stage::STAGE2);
+                if (level->GetCurrentStage() == Stage::STAGE1)
+                {
+                    level->Load(Stage::STAGE2);
+                }
+                else if (level->GetCurrentStage() == Stage::STAGE2)
+                {
+                    level->Load(Stage::STAGE3);
+                }
+                else
+                {
+                    level->Load(Stage::STAGE1);
+                }
+                
             }
 
             switch (event.type)

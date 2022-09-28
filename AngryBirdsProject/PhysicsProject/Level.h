@@ -22,6 +22,7 @@ class Level
 private:
 
 	b2World* m_world;
+	Stage m_CurrentStage;
 	class ContactListener* m_contactListener;
 
 	Catapult* m_catapult;
@@ -51,5 +52,6 @@ public:
 	void Render(sf::RenderWindow& _window, float _scale);
 	void Update();
 
+	Stage GetCurrentStage() { return m_CurrentStage; }
 };
 

@@ -25,7 +25,6 @@ void Enemy::TakeDamage()
 void Enemy::StartContact(Object* other)
 {
 	TakeDamage();
-	std::cout << m_health << "\n";
 }
 
 void Enemy::EndContact(Object* other)

@@ -28,6 +28,9 @@ Level::Level(float _scale)
 
     m_catapult = new Catapult(sf::Vector2f(120, 550));
 
+    windmill = new Windmill(950, 100, m_world);
+
+
 
     Load(STAGE1);
 
@@ -130,7 +133,7 @@ void Level::Load(Stage _level)
         m_ClickCount = 0;
 
         //Blocks
-        m_objects.push_back(new Object(sf::Vector2f(800, 400), 30.0f, b2BodyType::b2_staticBody, "LongBlockV.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(500, 450), 30.0f, b2BodyType::b2_staticBody, "LongBlockV.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 575), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
@@ -152,6 +155,8 @@ void Level::Load(Stage _level)
         m_enemies.push_back(new Enemy(sf::Vector2f(1150.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         
 
+
+
         break;
     case STAGE3:
 
@@ -170,7 +175,6 @@ void Level::Load(Stage _level)
         m_objects.push_back(new Object(sf::Vector2f(750, 100), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 550), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(950, 350), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 150), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1150, 500), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1150, 300), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1150, 100), 30.0f, b2BodyType::b2_staticBody, "StaticBlock.png", m_world));
@@ -190,7 +194,6 @@ void Level::Load(Stage _level)
 
         m_enemies.push_back(new Enemy(sf::Vector2f(950.0f, 500.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(950.0f, 300.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
-        m_enemies.push_back(new Enemy(sf::Vector2f(950.0f, 100.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
 
         m_enemies.push_back(new Enemy(sf::Vector2f(1150.0f, 450.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(1150.0f, 250.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
@@ -263,14 +266,33 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
         m_enemies[i]->Render(_window, _scale);
     }
     m_catapult->Render(_window);
-
+    windmill->Render(_window, _scale);
 
 }
 
 void Level::Update()
 {
 
+    m_enemyCount = m_enemies.size();
+    if (m_enemyCount <= 0)
+    {
+        Unload();
 
+        if (m_CurrentStage == Stage::STAGE1)
+        {
+            Load(Stage::STAGE2);
+        }
+        else if (m_CurrentStage == Stage::STAGE2)
+        {
+            Load(Stage::STAGE3);
+        }
+        else
+        {
+            Load(Stage::STAGE1);
+        }
+
+
+    }
     // world step
     m_world->Step(1.0f / 60.0f, 8, 3);
 

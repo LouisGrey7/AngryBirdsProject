@@ -21,6 +21,7 @@
 #include "Bird.h"
 #include "Enemy.h"
 #include "ContactListener.h"
+#include "Windmill.h"
 
 enum Stage
 {
@@ -47,8 +48,10 @@ private:
 	std::vector<Object*> m_objectstoDestroy;
 	std::vector<Bird*> m_birdstoDestroy;
 	std::vector<Enemy*> m_enemiestoDestroy;
+	Windmill* windmill;
 
 	int m_ClickCount = 0;
+	int m_enemyCount = 0;
 
 public:
 

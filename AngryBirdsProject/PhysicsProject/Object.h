@@ -29,11 +29,11 @@ private:
 
 	//SFML Stuff
 
-	sf::Sprite m_sprite;
 	sf::Texture m_texture;
 
 public:
 
+	sf::Sprite m_sprite;
 	b2Body* m_body;
 	Object(sf::Vector2f _position, float _scale, b2BodyType _bodytype, std::string _spritename, b2World* _world);
 	virtual ~Object();

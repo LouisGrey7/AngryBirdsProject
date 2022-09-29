@@ -107,7 +107,7 @@ void Bird::UseSpecialAbility(float _scale)
 		case BIRDTYPE::GREENBIRD: //The boomerang bird. No-U turn around.
 			this->m_body->ApplyAngularImpulse(1.0f, true);
 			this->m_body->SetLinearVelocity(b2Vec2(0.0f, this->m_body->GetLinearVelocity().y));
-			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 250.0f), this->m_body->GetPosition(), true);
+			this->m_body->ApplyLinearImpulse(b2Vec2(-400.0f, 500.0f), this->m_body->GetPosition(), true);
 			break;
 		case BIRDTYPE::BLUEBIRD:
 			break;

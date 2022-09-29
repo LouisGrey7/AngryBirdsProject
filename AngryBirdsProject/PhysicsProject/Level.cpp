@@ -30,7 +30,7 @@ Level::Level(float _scale)
 
     windmill = new Windmill(950, 100, m_world);
 
-
+    rope = new Rope(1250, 25, m_world);
 
     Load(STAGE1);
 
@@ -134,9 +134,9 @@ void Level::Load(Stage _level)
 
         //Blocks
         m_objects.push_back(new Object(sf::Vector2f(500, 450), 30.0f, b2BodyType::b2_staticBody, "LongBlockV.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
-        m_objects.push_back(new Object(sf::Vector2f(950, 575), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(700.0f, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(700.0f, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
+        m_objects.push_back(new Object(sf::Vector2f(700.0f, 575), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
 
         m_objects.push_back(new Object(sf::Vector2f(1150, 475), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
         m_objects.push_back(new Object(sf::Vector2f(1150, 525), 30.0f, b2BodyType::b2_dynamicBody, "Block.png", m_world));
@@ -145,13 +145,13 @@ void Level::Load(Stage _level)
 
 
         //Birds
-        m_birds.push_back(new Bird(randBird3));
-        m_birds.push_back(new Bird(randBird3));
+        m_birds.push_back(new Bird(randBird1));
+        m_birds.push_back(new Bird(randBird1));
         m_birds.push_back(new Bird(randBird3));
         m_birds.push_back(new Bird(randBird3));
 
         //Enemies
-        m_enemies.push_back(new Enemy(sf::Vector2f(950.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
+        m_enemies.push_back(new Enemy(sf::Vector2f(700.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         m_enemies.push_back(new Enemy(sf::Vector2f(1150.0f, 425.0f), 30.0f, b2BodyType::b2_dynamicBody, "Enemy.png", m_world));
         
 
@@ -246,7 +246,7 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
 
         if(m_birds[i]->m_birdtype == BIRDTYPE::GREENBIRD)
         {
-            if ((float)m_birds[i]->m_sprite.getPosition().x > 1200.0f && !m_birds[i]->m_AbilityActivated)
+            if ((float)m_birds[i]->m_sprite.getPosition().x > 1100.0f && !m_birds[i]->m_AbilityActivated)
             {
                 m_birds[i]->UseSpecialAbility(_scale);
                 m_birds[i]->m_AbilityActivated = true;
@@ -280,6 +280,7 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
     }
     m_catapult->Render(_window);
     windmill->Render(_window, _scale);
+    rope->Render(_window, _scale);
 
 }
 

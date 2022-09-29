@@ -152,6 +152,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Rope.cpp" />
     <ClCompile Include="Windmill.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Rope.h" />
     <ClInclude Include="Windmill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

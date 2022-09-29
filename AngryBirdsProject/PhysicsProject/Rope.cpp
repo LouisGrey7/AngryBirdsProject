@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Rope.cpp
+// Description	: Creates a rope of circle objects
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #include "Rope.h"
 Rope::Rope(float x, float y, b2World* world)
 {
@@ -23,17 +36,17 @@ Rope::Rope(float x, float y, b2World* world)
 	DJD3.bodyA = box3->GetBody();
 	DJD3.bodyB = box4->GetBody();
 
-	DJD.length = 0.1;
-	DJD.stiffness = 20;
-	DJD.damping = 0.1;
+	DJD.length = 0.1f;
+	DJD.stiffness = 20.0f;
+	DJD.damping = 0.1f;
 
-	DJD2.length = 0.1;
-	DJD2.stiffness = 15;
-	DJD2.damping = 0.1;
+	DJD2.length = 0.1f;
+	DJD2.stiffness = 15.0f;
+	DJD2.damping = 0.1f;
 
-	DJD3.length = 0.1;
-	DJD3.stiffness = 15;
-	DJD3.damping = 0.1;
+	DJD3.length = 0.1f;
+	DJD3.stiffness = 15.0f;
+	DJD3.damping = 0.1f;
 
 	joint = (b2DistanceJoint*)world->CreateJoint(&DJD);
 	joint2 = (b2DistanceJoint*)world->CreateJoint(&DJD2);

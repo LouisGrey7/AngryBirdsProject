@@ -1,3 +1,16 @@
+//
+// Bachelor of Software Engineering
+// Media Design School
+// Auckland
+// New Zealand
+//
+// (c) 2022 Media Design School
+//
+// File Name	: Windmill.cpp
+// Description	: Functionality for a rotating block object
+// Author		: David Andrews && Louis Grey
+// Mail			: David.Andrews@mds.ac.nz      Louis.Grey@mds.ac.nz
+//
 #include "Windmill.h"
 
 Windmill::Windmill(float x, float y, b2World* world)
@@ -8,8 +21,8 @@ Windmill::Windmill(float x, float y, b2World* world)
 
 
 	RJD.Initialize(boxV->m_body, boxH->m_body, boxV->m_body->GetWorldCenter());
-	RJD.motorSpeed = 3.14 * 2;
-	RJD.maxMotorTorque = 1000.0;
+	RJD.motorSpeed = 3.14f * 2.0f;
+	RJD.maxMotorTorque = 1000.0f;
 	RJD.enableMotor = true;
 
 	joint = (b2RevoluteJoint*)world->CreateJoint(&RJD);

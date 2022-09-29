@@ -287,7 +287,7 @@ void Level::Render(sf::RenderWindow& _window, float _scale)
 void Level::Update()
 {
 
-    m_enemyCount = m_enemies.size();
+    m_enemyCount = (int)m_enemies.size();
     if (m_enemyCount <= 0)
     {
         Unload();
